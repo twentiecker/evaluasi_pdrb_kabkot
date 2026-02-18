@@ -21,6 +21,7 @@ Sistem ini digunakan untuk:
 
 1. Evaluasi PDRB Tahunan
 2. Evaluasi PDRB Triwulanan
+3. Evaluasi selisih PDRB dengan lapus (ADHB dan ADHK)
 
 Evaluasi dilakukan berdasarkan aturan (rule) dan batas nilai (threshold) yang dapat disesuaikan sesuai kebutuhan analisis.
 
@@ -37,6 +38,7 @@ evaluasi_pdrb_kabkot/
 ├── main_2023_2024.ipynb
 ├── input/
 │   └── Evaluasi.xlsx
+│   └── Selisih Dengan Lapus.xlsx
 ├── output/
 │   └── (hasil evaluasi per provinsi)
 ├── requirements.txt
@@ -51,8 +53,13 @@ Penjelasan:
 - `main_2023_2024.ipynb`  
   Digunakan khusus untuk evaluasi tahunan tahun 2023 dan 2024.
 
+- `main_selisih_lapus.ipynb`  
+  Digunakan khusus untuk evaluasi tahunan tahun 2023 dan 2024.
+
 - Folder `input/`  
   Digunakan untuk menyimpan file sumber dengan nama wajib:
+  - Evaluasi.xlsx untuk evaluasi PDRB Tahunan dan Triwulanan
+  - Selisih Dengan Lapus.xlsx untuk evaluasi selisih PDRB dengan lapus (ADHB dan ADHK)
 
 - Folder `output/`  
   Digunakan untuk menyimpan hasil evaluasi yang dihasilkan sistem.  
@@ -78,6 +85,16 @@ Pada masing-masing notebook tersedia parameter threshold yang dapat disesuaikan 
 Untuk evaluasi triwulanan:
 
 - Gunakan `main_2025.ipynb`
+
+Parameter threshold dapat diubah pada bagian konfigurasi awal notebook.
+
+---
+
+### 4.3 Evaluasi Selisih PDRB Dengan Lapus
+
+Untuk evaluasi selisih PDRB dengan lapus:
+
+- Gunakan `main_selisih_lapus.ipynb`
 
 Parameter threshold dapat diubah pada bagian konfigurasi awal notebook.
 
@@ -116,13 +133,14 @@ python -m venv venv
 ```
 
 Aktivasi environment:
-Windows:
+
+- Windows:
 
 ```bash
 venv\Scripts\activate
 ```
 
-Mac/Linux:
+- Mac/Linux:
 
 ```bash
 source venv/bin/activate
