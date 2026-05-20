@@ -22,6 +22,7 @@ Sistem ini digunakan untuk:
 1. Evaluasi PDRB Tahunan
 2. Evaluasi PDRB Triwulanan
 3. Evaluasi selisih PDRB dengan lapus (ADHB dan ADHK)
+4. Evaluasi PDRB Triwulanan Komponen Baru
 
 Evaluasi dilakukan berdasarkan aturan (rule) dan batas nilai (threshold) yang dapat disesuaikan sesuai kebutuhan analisis.
 
@@ -33,14 +34,16 @@ Struktur direktori proyek adalah sebagai berikut:
 
 ```bash
 evaluasi_pdrb_kabkot/
-│
 ├── main_2025.ipynb
 ├── main_2023_2024.ipynb
-├── input/
-│   └── Evaluasi.xlsx
-│   └── Selisih Dengan Lapus.xlsx
-├── output/
-│   └── (hasil evaluasi per provinsi)
+├── main_2025_2026_komponen_baru.ipynb
+├── data/
+│   ├── input/
+│   │   ├── Evaluasi.xlsx
+│   │   ├── Selisih Dengan Lapus.xlsx
+│   │   └── Evaluasi Komponen Baru.xlsx
+│   └── output/
+│       └── (hasil evaluasi per provinsi)
 ├── requirements.txt
 └── README.md
 ```
@@ -56,12 +59,16 @@ Penjelasan:
 - `main_selisih_lapus.ipynb`  
   Digunakan khusus untuk evaluasi tahunan tahun 2023 dan 2024.
 
-- Folder `input/`  
+- `main_2025_2026_komponen_baru.ipynb`  
+  Digunakan untuk evaluasi tahun 2026 Triwulan I dengan komponen baru dimulai dari tahun 2025Q1 s.d. 2026Q1, baik triwulanan maupun tahunan.
+
+- Folder `data/input/`  
   Digunakan untuk menyimpan file sumber dengan nama wajib:
   - Evaluasi.xlsx untuk evaluasi PDRB Tahunan dan Triwulanan
   - Selisih Dengan Lapus.xlsx untuk evaluasi selisih PDRB dengan lapus (ADHB dan ADHK)
+  - Evaluasi Komponen Baru.xlsx untuk evaluasi PDRB dengan komponen baru
 
-- Folder `output/`  
+- Folder `data/output/`  
   Digunakan untuk menyimpan hasil evaluasi yang dihasilkan sistem.  
   Output akan berupa beberapa file yang dikelompokkan berdasarkan provinsi.
 
@@ -85,6 +92,7 @@ Pada masing-masing notebook tersedia parameter threshold yang dapat disesuaikan 
 Untuk evaluasi triwulanan:
 
 - Gunakan `main_2025.ipynb`
+- Tahun 2026 Triwulan I → gunakan `main_2025_2026_komponen_baru.ipynb` (khusus triwulan I juga mengevaluasi tahun 2025)
 
 Parameter threshold dapat diubah pada bagian konfigurasi awal notebook.
 
@@ -158,13 +166,11 @@ pip install -r requirements.txt
 
 ## 7. Prosedur Penggunaan
 
-1. Pastikan folder input/ dan output/ tersedia.
-
-2. Letakkan file sumber dengan nama: "Evaluasi.xlsx"
-
-3. Buka notebook sesuai kebutuhan: "main_2025.ipynb" atau "main_2023_2024.ipynb"
+1. Pastikan folder data/input/ dan data/output/ tersedia.
+2. Letakkan file sumber dengan nama: "Evaluasi.xlsx" atau "Selisih Dengan Lapus.xlsx" atau "Evaluasi Komponen Baru.xlsx" (sesuaikan dengan kebutuhan)
+3. Buka notebook sesuai kebutuhan: "main_2025.ipynb" atau "main_2023_2024.ipynb" atau "main_2025_2026_komponen_baru.ipynb" (sesuaikan dengan kebutuhan)
 4. Jalankan seluruh sel (Run All Cells).
-5. Hasil evaluasi akan tersimpan secara otomatis pada folder: "output/"
+5. Hasil evaluasi akan tersimpan secara otomatis pada folder: "data/output/"
 
 ---
 
@@ -175,21 +181,16 @@ Nilai threshold dan parameter evaluasi dapat disesuaikan pada bagian awal notebo
 Perubahan parameter harus dilakukan dengan memperhatikan:
 
 - Konsistensi metodologi evaluasi
-
 - Standar yang berlaku
-
 - Dokumentasi perubahan (jika digunakan dalam konteks institusi)
 
 ---
 
 ## 9. Ketentuan dan Catatan Penting
 
-- Nama file input wajib: Evaluasi.xlsx
-
+- Nama file input wajib: "Evaluasi.xlsx" atau "Selisih Dengan Lapus.xlsx" atau "Evaluasi Komponen Baru.xlsx" (sesuaikan dengan kebutuhan)
 - Struktur dan format Excel harus sesuai template yang digunakan sistem
-
-- Folder input/ dan output/ harus tersedia sebelum proses dijalankan
-
+- Folder data/input/ dan data/output/ harus tersedia sebelum proses dijalankan
 - Disarankan tidak mengubah struktur logika utama tanpa pemahaman teknis yang memadai
 
 ---
@@ -201,7 +202,5 @@ Sistem ini dikembangkan untuk meningkatkan efisiensi, konsistensi, dan akuntabil
 Pengembangan lanjutan dapat mencakup:
 
 - Otomatisasi validasi data
-
 - Integrasi dengan sistem basis data
-
 - Pengembangan antarmuka pengguna (GUI/Web Interface)
